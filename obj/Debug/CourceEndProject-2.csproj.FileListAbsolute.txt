@@ -1,0 +1,7 @@
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\bin\Debug\CourceEndProject-2.exe.config
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\bin\Debug\CourceEndProject-2.exe
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\bin\Debug\CourceEndProject-2.pdb
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\obj\Debug\CourceEndProject-2.csproj.AssemblyReference.cache
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\obj\Debug\CourceEndProject-2.csproj.CoreCompileInputs.cache
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\obj\Debug\CourceEndProject-2.exe
+C:\mphasis-B2\Day-22\CourceEndProject-2\CourceEndProject-2\obj\Debug\CourceEndProject-2.pdb
