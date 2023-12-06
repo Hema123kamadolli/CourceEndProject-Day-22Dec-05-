@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CourceEndProject_2
 {
     internal class Program
     {
-        //File path where teacher information is stored
-        static string filePath = "C:\\mphasis-B2\\Day-22\\CourceEndProject-2\\CourceEndProject-2\\RainboSchool.txt";
+        // File path to store teacher data
+        static string filePath = "C:\\mphasis-B2\\Day-22\\CourceEndProject-2\\CourceEndProject-2\\TeachersData.txt";
+
         static void Main(string[] args)
         {
             while (true)
             {
-                Console.WriteLine("1. Add Teacher\n2. Update Teacher\n3. Exit");
-                //Read the input from user
+                Console.WriteLine("****Store and Update of Teachers Data****");
+                Console.WriteLine("1. Add Teacher.");
+                Console.WriteLine("2. Update Teacher.");
+                Console.WriteLine("3. Display Teachers.");
+                Console.WriteLine("4. Exit.");
+
+                // User choice for the options
                 int choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
                 {
                     case 1:
-                        AddTeacher();//Call the method to add teacher
+                        AddTeacher();
                         break;
                     case 2:
-                        UpdateTeacher();//Call the method to update a teacher
+                        UpdateTeacher();
                         break;
                     case 3:
-                        Environment.Exit(0);//Exist the program
+                        DisplayTeachers();
+                        break;
+                    case 4:
+                        Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Please try again. ");
+                        Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
             }
         }
-        //Method to add a new Teacher
+
+        // Method to add a new teacher
         static void AddTeacher()
         {
             Console.WriteLine("Enter Teacher ID:");
@@ -47,23 +53,25 @@ namespace CourceEndProject_2
             Console.WriteLine("Enter Teacher Name:");
             string name = Console.ReadLine();
 
-            Console.WriteLine("Enter Class and Section:");
+            Console.WriteLine("Enter ClassAndSection:");
             string classSection = Console.ReadLine();
-            
-            //Creating Teacher object with user input
+
+            // Create a Teacher object with the provided information
             Teacher teacher = new Teacher { ID = id, Name = name, ClassSection = classSection };
 
-            //Read existing lines from the File
+            // Read existing lines from the file
             List<string> lines = File.ReadAllLines(filePath).ToList();
 
-            //Adding new teacher information to the list
+            // Add new teacher information to the list of lines
             lines.Add($"{teacher.ID}\t\t{teacher.Name}\t\t{teacher.ClassSection}");
 
+            // Write the updated lines back to the file
             File.WriteAllLines(filePath, lines);
 
-            Console.WriteLine("Teacher added Successfuly!!");
+            Console.WriteLine("Teacher added successfully!!");
         }
-        // Method to update an existing teacher's information
+
+        // Method to update an existing teacher
         static void UpdateTeacher()
         {
             Console.WriteLine("Enter Teacher ID to update:");
@@ -73,39 +81,57 @@ namespace CourceEndProject_2
             List<string> lines = File.ReadAllLines(filePath).ToList();
             bool found = false;
 
-            // Iterate through each line to find and update the specified teacher
+            // Iterate through each line to find the teacher to update
             for (int i = 0; i < lines.Count; i++)
             {
+                // Split the line into parts using tab ('\t')
                 string[] parts = lines[i].Split('\t');
+
+                // Try to parse the first part as an integer (teacher ID)
                 if (int.TryParse(parts[0], out int id))
                 {
-
                     if (id == idToUpdate)
                     {
                         Console.WriteLine("Enter New Name:");
                         string newName = Console.ReadLine();
 
-                        Console.WriteLine("Enter New Class and Section:");
+                        Console.WriteLine("Enter New ClassAndSection:");
                         string newClassSection = Console.ReadLine();
 
-                        // Update the line with the new teacher information
+                        // Update the line with the new information
                         lines[i] = $"{idToUpdate}\t\t{newName}\t\t{newClassSection}";
                         found = true;
                     }
                 }
             }
-                File.WriteAllLines(filePath, lines);
-            // Display a message if the specified teacher is not found
+
+            // Write the updated lines back to the file
+            File.WriteAllLines(filePath, lines);
+
             if (!found)
-                {
-                    Console.WriteLine("Teacher not found!");
-                }
-                else
-                {
-                    Console.WriteLine("TeacherUpdated SuccessFuly!!");
-                }
-            
-            Console.ReadKey();
+            {
+                Console.WriteLine("Teacher not found!");
+            }
+            else
+            {
+                Console.WriteLine("Teacher updated successfully!!");
+            }
         }
+        //Method to Diplay Record of Teachers
+        static void DisplayTeachers()
+        {
+            Console.WriteLine("Teachers Records:");
+            List<string> lines = File.ReadAllLines(filePath).ToList();
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
+            Console.ReadKey();
+
+            
+        }
+       
     }
 }
+
+    

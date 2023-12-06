@@ -1,0 +1,11 @@
+Git init
+git status
+git add .
+git commit -m 'name of file to commit'
+git status
+create new repository
+copy the link to remote link
+$ git remote add origin
+and paste it git bash
+again copy the link to push
+$ git push -u origin master
